@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="BiYeSheJi"
+  id="myeclipse.1394078547229"
+  context-root="/BiYeSheJi"
+  j2ee-spec="5.0"
+  archive="BiYeSheJi.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring"></constant>
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.action.extension" value="do,action" />
+	<!-- 指定允许上传的文件最大字节数。默认值是2097152(2M) -->
+	<constant name="struts.multipart.maxSize" value="10701096" />
+
+	<!-- 拦截器配置 -->
+	<package name="intercept" extends="struts-default">
+		<interceptors>
+			<!-- 先定义拦截器 -->
+			<interceptor name="myInterceptor" class="com.zy.util.PageInterceptor">
+			</interceptor>
+
+			<!-- 加到自己设置的拦截器栈里边去 -->
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="myInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<!-- 改变系统默认的拦截器 -->
+		<default-interceptor-ref name="myStack"></default-interceptor-ref>
+	</package>
+	<package name="struts2" extends="intercept">
+		<!-- 售出粮食信息 -->
+		<action name="sell_*" method="{1}" class="sellAction">
+			<result name="upd">/system/sell/upd.jsp</result>
+			<result name="add">/system/sell/add.jsp</result>
+			<result name="list">/system/sell/list.jsp</result>
+		</action>
+		<!-- <action name="SellAction" method="comparison" class="com.zy.action.SellAction"/> -->
+		<!-- 粮食收获信息 -->
+		<action name="food_*" method="{1}" class="foodAction">
+			<result name="upd">/system/food/upd.jsp</result>
+			<result name="add">/system/food/add.jsp</result>
+			<result name="list">/system/food/list.jsp</result>
+		</action>
+		<!-- 土地喷药信息 -->
+		<action name="spray_*" method="{1}" class="sprayAction">
+			<result name="upd">/system/spray/upd.jsp</result>
+			<result name="add">/system/spray/add.jsp</result>
+			<result name="list">/system/spray/list.jsp</result>
+		</action>
+		<!-- 土地施肥信息 -->
+		<action name="fertilize_*" method="{1}" class="fertilizeAction">
+			<result name="upd">/system/fertilize/upd.jsp</result>
+			<result name="add">/system/fertilize/add.jsp</result>
+			<result name="list">/system/fertilize/list.jsp</result>
+		</action>
+		<!-- 土地浇灌信息 -->
+		<action name="water_*" method="{1}" class="waterAction">
+			<result name="upd">/system/water/upd.jsp</result>
+			<result name="add">/system/water/add.jsp</result>
+			<result name="list">/system/water/list.jsp</result>
+		</action>
+		<!-- 土地耕种信息 -->
+		<action name="plant_*" method="{1}" class="plantAction">
+			<result name="upd">/system/plant/upd.jsp</result>
+			<result name="add">/system/plant/add.jsp</result>
+			<result name="list">/system/plant/list.jsp</result>
+		</action>
+		<!-- 土地信息 -->
+		<action name="earth_*" method="{1}" class="earthAction">
+			<result name="upd">/system/earth/upd.jsp</result>
+			<result name="add">/system/earth/add.jsp</result>
+			<result name="list">/system/earth/list.jsp</result>
+		</action>
+		<!-- 用户 -->
+		<action name="user_*" method="{1}" class="userAction">
+			<result name="cnt">/system/user/cnt.jsp</result>
+			<result name="login">/login.jsp</result>
+			<result name="upd">/system/user/upd.jsp</result>
+			<result name="index">/index.jsp</result>
+			<result name="add">/system/user/add.jsp</result>
+			<result name="list">/system/user/list.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+    <bean id="factoryService" class="com.zy.logic.FactoryService">
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+		<property name="earthService">
+			<ref bean="earthService"/>
+		</property>
+		<property name="plantService">
+			<ref bean="plantService"/>
+		</property>
+		<property name="waterService">
+		    <ref bean="waterService"/>
+		</property>
+		<property name="fertilizeService">
+		    <ref bean="fertilizeService"/>
+		</property>
+		<property name="sprayService">
+		    <ref bean="sprayService"/>
+		</property>
+		<property name="foodService">
+		    <ref bean="foodService"/>
+		</property>
+		<property name="sellService">
+		    <ref bean="sellService"/>
+		</property>
+	</bean>
+	<bean id="userService" class="com.zy.dao.UserDao"></bean>
+	<bean id="earthService" class="com.zy.dao.EarthDao"></bean>
+	<bean id="plantService" class="com.zy.dao.PlantDao"></bean>
+	<bean id="waterService" class="com.zy.dao.WaterDao"></bean>
+	<bean id="fertilizeService" class="com.zy.dao.FertilizeDao"></bean>
+	<bean id="sprayService" class="com.zy.dao.SprayDao"></bean>
+	<bean id="foodService" class="com.zy.dao.FoodDao"></bean>
+	<bean id="sellService" class="com.zy.dao.SellDao"></bean>
+</beans>
